@@ -4,7 +4,7 @@ use reqwest::Url;
 // use url::Url;
 
 // TODO change this to &str later
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct URL {
     // scheme: String, 
     // host: String, 

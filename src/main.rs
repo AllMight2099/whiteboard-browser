@@ -1,13 +1,22 @@
 mod url;
+mod browser;
 
 use url::URL;
+use browser::Browser;
 
-fn main() {
-    let example_url = "https://browser.engineering/examples/xiyouji.html";
-    let url: URL = URL::url("https://example.com".to_string()).unwrap();
+// const example_url: String = 
 
-    load(url);
+fn main() -> iced::Result {
+    // let example_url = "https://example.com".to_string();
+    let example_url: String = "https://browser.engineering/examples/xiyouji.html".to_string();
 
+    let url: URL = URL::url(example_url).unwrap();
+    
+    // let browser:
+    // load(url);
+    browser::Browser::run(url)
+    
+    // iced::application(Browser::new, Browser::update, Browser::view).run()
     // println!("Hello, world!");
 
     // println!("url as a whole: {:#?}", url);

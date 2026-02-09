@@ -55,27 +55,16 @@ impl Widget<Message,Theme, iced::Renderer> for TabView <'_> {
         _cursor: Cursor,
         viewport: &iced::Rectangle,
     ) {
-
-        // println!("inside draw");
-        let new_displist = self.tab.displayList.clone();
-
-        for i in new_displist.iter() {
-            print!("text: {:#?}", i)
-        }
-
-
-
         let geometry = self.tab.cache.draw(renderer, viewport.size(), |frame| {
         
             let mut position: Point = Point { x: 0.0, y: 0.0 };
             for content in self.tab.displayList.iter() {
-                let c = content.clone();
-                println!("character inside content: {:#?}", c);
+                // println!("character inside content: {:#?}", c);
                 let text = Text{
                     content: content.to_string(),
                     position,
                     size: iced::Pixels(20.0),
-                    // color: 
+                    color: iced::Color::WHITE, 
                     // line_height: todo!(),
                     align_x: iced_core::text::Alignment::Center,
                     align_y: iced::alignment::Vertical::Center,
@@ -86,9 +75,7 @@ impl Widget<Message,Theme, iced::Renderer> for TabView <'_> {
                 frame.fill_text(text);
 
                 position.x += HSTEP;
-
-                print!("viewport width: {:#?}", viewport.width);
-
+                
                 if position.x > viewport.width {
                     position.y += VSTEP;
                     position.x = 0.0;
